@@ -1,0 +1,768 @@
+{
+  "____ARCHITECT_NOTE____": "This prompt was engineered by a 30-year senior full-stack architect. Every pixel, every interaction, every line of logic is deliberate. This must NOT look AI-generated. It must look like a $200,000 agency build.",
+
+  "project": {
+    "name": "V3 Tour & Travels",
+    "tagline": "WHERE COMFORT MEETS JOURNEY",
+    "type": "Futuristic Premium Travel Booking Platform — Multi-Page React SPA",
+    "platform": "v0.dev — React + Tailwind CSS",
+    "build_standard": "PRODUCTION — ZERO PLACEHOLDERS — ZERO BROKEN LOGIC — ZERO AI AESTHETIC"
+  },
+
+  "business": {
+    "name": "V3 Tour & Travels",
+    "category": "Premium Taxi & Outstation Travel",
+    "location": "Ludhiana, Punjab, India",
+    "phone": "+91 98880 00510",
+    "whatsapp": "919888000510",
+    "whatsapp_url": "https://wa.me/919888000510",
+    "call_url": "tel:+919888000510",
+    "email": "imsatpalgrover@gmail.com",
+    "coverage": ["Ludhiana", "Chandigarh", "Delhi", "Amritsar", "Punjab", "Haryana", "Himachal Pradesh"]
+  },
+
+  "design_philosophy": {
+    "direction": "FUTURISTIC DEEP SPACE LUXURY — Think Tesla website meets Singapore Airlines meets SpaceX careers page",
+    "not_allowed": [
+      "Black and gold color scheme",
+      "Generic AI website layouts",
+      "Cookie-cutter component patterns",
+      "Purple gradients on white (AI cliché)",
+      "Inter or Roboto fonts",
+      "Overused card patterns",
+      "Stock photo placeholders",
+      "Lorem ipsum text",
+      "Broken or laggy animations"
+    ],
+    "must_feel_like": "A 30-year veteran full-stack developer and designer crafted every detail by hand over 3 months"
+  },
+
+  "color_system": {
+    "rationale": "Deep Space Navy + Electric Teal — premium, futuristic, trustworthy, UNIQUE in Indian travel market",
+    "tokens": {
+      "bg_deepest": "#03051A",
+      "bg_deep": "#06091E",
+      "bg_card": "#0A0F2E",
+      "bg_surface": "#0E1435",
+      "bg_elevated": "#131B42",
+      "teal_primary": "#00D4C8",
+      "teal_bright": "#00FFED",
+      "teal_dim": "#00A89E",
+      "blue_accent": "#38BDF8",
+      "blue_electric": "#60A5FA",
+      "white_pearl": "#EEF4FF",
+      "white_80": "rgba(238,244,255,0.8)",
+      "white_50": "rgba(238,244,255,0.5)",
+      "white_20": "rgba(238,244,255,0.2)",
+      "white_08": "rgba(238,244,255,0.08)",
+      "white_04": "rgba(238,244,255,0.04)",
+      "border_teal": "rgba(0,212,200,0.15)",
+      "border_teal_strong": "rgba(0,212,200,0.35)",
+      "glow_teal": "rgba(0,212,200,0.25)",
+      "green_wa": "#22C55E",
+      "coral_error": "#F87171",
+      "mist_text": "#7B93C8"
+    },
+    "css_variables": ":root { --bg-deep: #03051A; --bg-card: #0A0F2E; --teal: #00D4C8; --teal-bright: #00FFED; --blue: #38BDF8; --pearl: #EEF4FF; --mist: #7B93C8; --border: rgba(0,212,200,0.15); --glow: rgba(0,212,200,0.25); }"
+  },
+
+  "typography": {
+    "display_font": {
+      "name": "Cabinet Grotesk",
+      "weights": "700, 800, 900",
+      "source": "https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&display=swap",
+      "usage": "Hero headline, section H2 headings"
+    },
+    "body_font": {
+      "name": "Satoshi",
+      "weights": "400, 500, 600",
+      "source": "https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600&display=swap",
+      "usage": "All body text, descriptions, labels"
+    },
+    "futuristic_font": {
+      "name": "Chakra Petch",
+      "weights": "500, 600",
+      "source": "https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&display=swap",
+      "usage": "Stats numbers, loading screen, badges, distance/time chips"
+    },
+    "fallback": "'Cabinet Grotesk', 'Satoshi', system-ui, sans-serif",
+    "scale": {
+      "hero_h1": "font-size: clamp(3.2rem, 7vw, 6.5rem); font-weight: 900; line-height: 1.0; letter-spacing: -0.025em; font-family: Cabinet Grotesk",
+      "h2_section": "font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; font-family: Cabinet Grotesk",
+      "h3_card": "font-size: 1.2rem; font-weight: 700; font-family: Cabinet Grotesk",
+      "body": "font-size: 1rem; font-weight: 400; line-height: 1.75; font-family: Satoshi",
+      "label_caps": "font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-family: Satoshi",
+      "stat_number": "font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; font-family: Chakra Petch"
+    }
+  },
+
+  "loading_screen": {
+    "concept": "Full-screen intro that plays once per session. A single electric teal speed-line sweeps LEFT → RIGHT across the screen, then the letters of 'V3 TOUR & TRAVELS' clip in left-to-right with a 55ms stagger per character. A progress bar fills below. Fades out cleanly revealing the site.",
+    "bg": "#03051A",
+    "duration_total": "2400ms",
+    "implementation": {
+      "component_name": "LoadingScreen",
+      "show_condition": "!sessionStorage.getItem('v3_loaded')",
+      "on_complete": "sessionStorage.setItem('v3_loaded', '1'); setLoaded(true)",
+      "logo_text": "V3 TOUR & TRAVELS",
+      "logo_style": "font-family: Chakra Petch; font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 600; color: #EEF4FF; letter-spacing: 0.15em; text-transform: uppercase"
+    },
+    "animation_sequence": [
+      {
+        "step": 1,
+        "what": "Speed line sweep",
+        "timing": "0ms → 400ms",
+        "css": "div with height: 2px; background: linear-gradient(90deg, transparent, #00D4C8, #00FFED, transparent); transform: translateX(-100%); animation: speedLine 400ms ease-out forwards; @keyframes speedLine { to { transform: translateX(100vw); } }"
+      },
+      {
+        "step": 2,
+        "what": "Logo letters clip in L→R",
+        "timing": "350ms start; each char +55ms delay",
+        "technique": "Split 'V3 TOUR & TRAVELS' into individual span elements. Each span: overflow: hidden; display: inline-block. Inner text: transform: translateY(100%); animation: charIn 300ms ease-out forwards; @keyframes charIn { to { transform: translateY(0); } }. Delay: index * 55ms",
+        "teal_accent": "V and 3 characters are colored #00D4C8 — rest are #EEF4FF"
+      },
+      {
+        "step": 3,
+        "what": "Tagline fade in",
+        "timing": "1200ms",
+        "text": "WHERE COMFORT MEETS JOURNEY",
+        "style": "font-family: Satoshi; font-size: 0.75rem; letter-spacing: 0.25em; color: rgba(0,212,200,0.6); text-transform: uppercase; animation: fadeIn 500ms ease-out 1200ms both"
+      },
+      {
+        "step": 4,
+        "what": "Progress bar fills",
+        "timing": "0ms → 2000ms",
+        "style": "position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, #00D4C8, #38BDF8); animation: progressFill 2000ms ease-in-out forwards; @keyframes progressFill { from { width: 0%; } to { width: 100%; } }"
+      },
+      {
+        "step": 5,
+        "what": "Entire screen fades out",
+        "timing": "2000ms → 2400ms",
+        "css": "animation: fadeOut 400ms ease-out 2000ms forwards; @keyframes fadeOut { to { opacity: 0; pointer-events: none; } }"
+      }
+    ]
+  },
+
+  "logo": {
+    "concept": "V3 geometric monogram — the V is formed by two diagonal speed-lines converging, the 3 is clean and modern. Together they suggest a road converging to a vanishing point — the journey ahead.",
+    "svg_implementation": {
+      "viewBox": "0 0 120 40",
+      "v_letter": "Two diagonal lines forming V shape — stroke: #00D4C8; stroke-width: 2.5; fill: none — lines: M10,4 L30,36 M50,4 L30,36",
+      "3_number": "Modern 3 shape — fill: #EEF4FF; font-family: Chakra Petch; positioned at x:58 y:32 — font-size:32px",
+      "speed_lines": "3 horizontal lines to right of V — widths 20px, 15px, 10px — y positions spaced — stroke: #00D4C8; opacity: 0.4, 0.25, 0.12",
+      "animated": "On hover: speed lines extend with CSS transform scaleX — origin left — duration 300ms"
+    },
+    "text_variant": "V3 in Chakra Petch 600 teal + 'Tour & Travels' in Satoshi 400 pearl below or beside",
+    "glow": "filter: drop-shadow(0 0 12px rgba(0,212,200,0.5))"
+  },
+
+  "navbar": {
+    "initial_state": "Fully transparent — logo + nav links visible — no background",
+    "scrolled_state": "After 60px scroll: backdrop-filter: blur(20px) saturate(180%); background: rgba(3,5,26,0.85); border-bottom: 1px solid rgba(0,212,200,0.1); transition: all 400ms ease",
+    "height": "68px desktop; 60px mobile",
+    "logo_position": "Left",
+    "nav_links": {
+      "items": ["Services", "Routes", "Fleet", "About", "Contact"],
+      "style": "font-family: Satoshi; font-size: 0.9rem; font-weight: 500; color: rgba(238,244,255,0.7); hover: color #00D4C8",
+      "hover_effect": "::after pseudo underline that scales from 0 to 100% width on hover — background: #00D4C8; height: 1px; transition: transform 250ms ease"
+    },
+    "cta_button": {
+      "text": "Book Now",
+      "style": "bg: transparent; border: 1.5px solid #00D4C8; color: #00D4C8; border-radius: 999px; padding: 8px 22px; font-family: Satoshi; font-weight: 600; transition: all 250ms; hover: bg #00D4C8 color #03051A shadow: 0 0 20px rgba(0,212,200,0.4)"
+    },
+    "mobile_menu": {
+      "trigger": "Hamburger icon — 3 lines animate to X",
+      "overlay": "Full screen — bg: #03051A/97 backdrop-blur — all nav links stacked center — Book Now button large at bottom — close icon top right",
+      "animation": "translateX(100%) → translateX(0) — duration 350ms ease-out"
+    }
+  },
+
+  "hero_section": {
+    "id": "hero",
+    "height": "100vh; min-height: 100svh; overflow: hidden",
+    "background_base": "#03051A",
+
+    "three_js_scene": {
+      "mount": "useEffect — canvas inside ref div — cleanup on unmount",
+      "performance": "requestAnimationFrame cancel on unmount; dispose geometries/materials; pixelRatio: Math.min(devicePixelRatio, 2); pause on document.hidden",
+      "camera": "PerspectiveCamera(60, aspect, 0.1, 100); position: (0, 1.4, 3.5); lookAt: (0, 0.6, -15)",
+      "renderer": "WebGLRenderer({ antialias: true, alpha: true }); setSize; setClearColor(0x000000, 0)",
+
+      "road": {
+        "geometry": "PlaneGeometry(5, 100, 1, 50) rotated -Math.PI/2 on X",
+        "material": "MeshStandardMaterial — color: #0A0D1A; roughness: 0.95; metalness: 0.05",
+        "road_markings": "16 BoxGeometry(0.05, 0.002, 0.7) painted white (opacity 0.7) spaced evenly along Z — animated: marking.position.z += 0.09 per frame; reset when z > 2.5 → z = -45"
+      },
+      "teal_headlight_beams": {
+        "geometry": "Two ConeGeometry(0.9, 14, 6, 1, true) — left at (-0.4, 0.3, 0.5), right at (0.4, 0.3, 0.5)",
+        "material": "MeshBasicMaterial — color #00D4C8 — transparent true — opacity: 0.05 — side: DoubleSide",
+        "animation": "opacity = 0.04 + Math.sin(time * 0.7) * 0.02 — subtle breathing"
+      },
+      "city_horizon": {
+        "type": "Points",
+        "count": 140,
+        "positions": "Clustered z: -40 to -60, x: -10 to 10, y: 0 to 5 (skyline heights)",
+        "material": "PointsMaterial — color: #00D4C8 — size: 0.07 — sizeAttenuation: true",
+        "mix": "80 teal points + 40 blue (#38BDF8) + 20 white — random assignment",
+        "animation": "per-point y += Math.sin(time + i * 0.4) * 0.005 — city breathes"
+      },
+      "stars": {
+        "count": 350,
+        "sphere_radius": 60,
+        "constraint": "y > 1 only (above horizon)",
+        "material": "PointsMaterial — color #FFFFFF — size: 0.035 — opacity: 0.5",
+        "animation": "scene.rotation.y += 0.00015 — imperceptibly slow rotation"
+      },
+      "teal_glow_road_edge": {
+        "concept": "Two thin lines along road edges with teal emissive glow — like LED road strips",
+        "geometry": "BoxGeometry(0.015, 0.01, 80) at x: -2.5 and x: 2.5 y: 0.01",
+        "material": "MeshStandardMaterial — color: #00D4C8 — emissive: #00D4C8 — emissiveIntensity: 1.5"
+      },
+      "lights": [
+        "AmbientLight(0x0A1025, 0.8)",
+        "PointLight(0x00D4C8, 2.0, 25, 2) at (0, 3, 0)",
+        "PointLight(0x38BDF8, 0.8, 40, 1) at (0, 1, -20)"
+      ],
+      "fog": "FogExp2(0x03051A, 0.012)",
+      "fallback": "If WebGL unavailable: CSS radial-gradient background with animated pseudo road lines"
+    },
+
+    "particles": {
+      "library": "tsParticles loaded via: const script = document.createElement('script'); script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js'; — wait for onload then init",
+      "config": {
+        "background": { "color": "transparent" },
+        "fpsLimit": 60,
+        "particles": {
+          "number": { "value": 55, "density": { "enable": true, "area": 900 } },
+          "color": { "value": ["#00D4C8", "#38BDF8", "#00FFED", "#EEF4FF"] },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.35, "random": true, "animation": { "enable": true, "speed": 0.6, "minimumValue": 0.05 } },
+          "size": { "value": { "min": 1, "max": 2.5 }, "random": true },
+          "links": { "enable": true, "distance": 130, "color": "#00D4C8", "opacity": 0.07, "width": 1 },
+          "move": { "enable": true, "speed": 0.5, "random": true, "outModes": "out" }
+        },
+        "interactivity": {
+          "events": { "onHover": { "enable": true, "mode": "repulse" }, "resize": true },
+          "modes": { "repulse": { "distance": 90, "duration": 0.5 } }
+        },
+        "responsive": [{ "maxWidth": 768, "options": { "particles": { "number": { "value": 22 } } } }],
+        "detectRetina": true
+      }
+    },
+
+    "mouse_parallax": {
+      "concept": "3D canvas div subtly shifts opposite to mouse — gives depth feeling",
+      "implementation": "onMouseMove on hero: const xRatio = (e.clientX / window.innerWidth - 0.5); const yRatio = (e.clientY / window.innerHeight - 0.5); canvasRef.current.style.transform = `translate(${xRatio * -18}px, ${yRatio * -12}px)`; — transition: transform 800ms ease-out"
+    },
+
+    "layers": [
+      "z-0: bg-[#03051A] absolute inset-0",
+      "z-1: Three.js canvas absolute inset-0 pointer-events-none — mouse-parallax transform",
+      "z-2: tsParticles canvas absolute inset-0 pointer-events-none",
+      "z-3: gradient overlays — top: linear from #03051A/60 to transparent — bottom: linear from transparent to #03051A — sides: radial vignette",
+      "z-10: hero content flex column items-center justify-center h-full pt-[68px]"
+    ],
+
+    "content": {
+      "badge": {
+        "text": "✦  Punjab's #1 Premium Travel Service  ✦",
+        "style": "inline-flex items-center gap-2 bg-[rgba(0,212,200,0.08)] border border-[rgba(0,212,200,0.2)] rounded-full px-5 py-1.5 text-[#00D4C8] text-xs font-medium tracking-[0.15em] uppercase font-[Satoshi] backdrop-blur-sm",
+        "animation": "fade-in slide-in-from-top-4 duration-600 delay-200"
+      },
+      "headline": {
+        "line1": "Your Journey,",
+        "line2": "Reimagined.",
+        "style": "font-family: Cabinet Grotesk; font-size: clamp(3.2rem,7vw,6.5rem); font-weight: 900; line-height: 1.0; letter-spacing: -0.025em; color: #EEF4FF; text-align: center",
+        "line2_style": "display block; color: #00D4C8; font-style: italic",
+        "animation": "fade-in slide-in-from-bottom-8 duration-700 delay-400",
+        "text_glow": "filter: drop-shadow(0 0 40px rgba(0,212,200,0.2))"
+      },
+      "tagline": {
+        "text": "WHERE COMFORT MEETS JOURNEY",
+        "style": "font-family: Chakra Petch; font-size: 0.65rem; letter-spacing: 0.3em; color: rgba(0,212,200,0.55); text-transform: uppercase; margin-top: 12px",
+        "animation": "fade-in duration-600 delay-600"
+      },
+      "description": {
+        "text": "Premium taxi & outstation travel from Ludhiana. Chandigarh · Delhi · Amritsar · All of Punjab. Professional drivers. Zero hidden charges.",
+        "style": "font-family: Satoshi; font-size: clamp(1rem,2vw,1.15rem); color: rgba(238,244,255,0.55); max-width: 500px; line-height: 1.75; text-align: center; margin-top: 16px",
+        "animation": "fade-in slide-in-from-bottom-4 duration-700 delay-700"
+      },
+      "cta_row": {
+        "layout": "flex flex-wrap gap-4 justify-center margin-top: 36px",
+        "animation": "fade-in slide-in-from-bottom-4 duration-700 delay-800",
+        "primary_cta": {
+          "text": "Book a Ride",
+          "action": "smoothScrollTo('#booking')",
+          "style": "bg-[#00D4C8] text-[#03051A] font-bold font-[Satoshi] rounded-full px-9 py-4 text-base hover:bg-[#00FFED] transition-all duration-300 shadow-[0_0_30px_rgba(0,212,200,0.35)] hover:shadow-[0_0_50px_rgba(0,212,200,0.6)] hover:scale-105 active:scale-95",
+          "shimmer": "overflow-hidden relative ::before absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-600"
+        },
+        "whatsapp_cta": {
+          "text": "WhatsApp Us",
+          "icon": "WhatsApp SVG 18px",
+          "action": "window.open('https://wa.me/919888000510?text=' + encodeURIComponent('Hi V3! I want to book a ride. 🚗'), '_blank')",
+          "style": "border border-[rgba(238,244,255,0.15)] hover:border-[#00D4C8]/40 text-[#EEF4FF] font-[Satoshi] font-semibold rounded-full px-9 py-4 text-base flex items-center gap-2.5 hover:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:scale-105"
+        }
+      },
+      "trust_strip": {
+        "layout": "flex flex-wrap justify-center gap-x-8 gap-y-2 margin-top: 40px",
+        "animation": "fade-in duration-800 delay-1000",
+        "items": [
+          "✓  500+ Happy Customers",
+          "✓  24/7 Available",
+          "✓  Zero Hidden Charges",
+          "✓  Instant Confirmation"
+        ],
+        "style": "font-family: Satoshi; font-size: 0.75rem; color: rgba(238,244,255,0.35); — ✓ color: #00D4C8"
+      },
+      "scroll_indicator": {
+        "position": "absolute bottom-8 left-50% -translate-x-50%",
+        "design": "SVG of a mouse outline with a dot inside that animates downward. Below: 'SCROLL' in Chakra Petch 0.55rem 0.2em spacing",
+        "color": "rgba(0,212,200,0.3)",
+        "animation": "dot: translateY(0) opacity:1 → translateY(8px) opacity:0 — 1.8s infinite"
+      }
+    }
+  },
+
+  "booking_form_section": {
+    "id": "booking",
+    "concept": "A stunning glassmorphism dark card that feels like a spacecraft control panel. It floats with a teal halo glow underneath it. Positioned as -mt-20 relative z-20 to overlap the hero fade.",
+    "outer_wrapper": "relative z-20 -mt-20 px-4 md:px-6 max-w-5xl mx-auto",
+    "card": {
+      "style": "bg-[rgba(10,15,46,0.85)] backdrop-blur-2xl border border-[rgba(0,212,200,0.18)] rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(0,212,200,0.06),0_-1px_0_rgba(0,212,200,0.1)] p-8 md:p-10",
+      "glow_orb_under": "absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-[#00D4C8] opacity-[0.06] blur-2xl rounded-full pointer-events-none"
+    },
+    "header": {
+      "label": "BOOK YOUR RIDE",
+      "label_style": "font-family: Chakra Petch; font-size: 0.65rem; letter-spacing: 0.25em; color: #00D4C8; text-transform: uppercase",
+      "title": "Where are you going?",
+      "title_style": "font-family: Cabinet Grotesk; font-size: 1.6rem; font-weight: 800; color: #EEF4FF; margin-top: 4px",
+      "sub": "Get instant confirmation on WhatsApp.",
+      "sub_style": "font-family: Satoshi; font-size: 0.875rem; color: rgba(238,244,255,0.45)"
+    },
+    "fields_grid": "grid grid-cols-1 md:grid-cols-2 gap-4 mt-8",
+    "input_style": "w-full bg-[rgba(238,244,255,0.04)] border border-[rgba(0,212,200,0.12)] focus:border-[#00D4C8] focus:bg-[rgba(0,212,200,0.04)] text-[#EEF4FF] placeholder-[rgba(238,244,255,0.25)] rounded-xl px-4 py-3.5 text-sm font-[Satoshi] outline-none transition-all duration-200 focus:shadow-[0_0_0_3px_rgba(0,212,200,0.1),inset_0_0_20px_rgba(0,212,200,0.03)]",
+    "label_style": "block font-family: Chakra Petch; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(238,244,255,0.4); margin-bottom: 8px; display: flex; align-items: center; gap: 6px",
+    "label_icon_color": "#00D4C8",
+    "error_style": "text-[#F87171] text-xs font-[Satoshi] mt-1.5",
+    "valid_field_style": "border-[rgba(0,212,200,0.4)] bg-[rgba(0,212,200,0.03)]",
+
+    "fields": [
+      { "id": "pickup", "label": "PICKUP LOCATION", "icon": "MapPin", "type": "text", "placeholder": "e.g. Ludhiana Railway Station", "validation": "minLength 3" },
+      { "id": "drop", "label": "DROP LOCATION", "icon": "Navigation", "type": "text", "placeholder": "e.g. Chandigarh Airport", "validation": "minLength 3" },
+      { "id": "date", "label": "TRAVEL DATE", "icon": "Calendar", "type": "date", "min": "dynamic — new Date().toISOString().split('T')[0]" },
+      { "id": "time", "label": "PICKUP TIME", "icon": "Clock", "type": "time" }
+    ],
+
+    "car_selector": {
+      "label_style": "same label_style as above — display full width below the 2-col grid",
+      "label_text": "CHOOSE VEHICLE",
+      "grid": "grid grid-cols-3 gap-3 mt-2",
+      "options": [
+        { "value": "Sedan", "emoji": "🚗", "name": "Sedan", "sub": "4 seats", "desc": "Economy", "examples": "Dzire, Amaze" },
+        { "value": "SUV", "emoji": "🚙", "name": "SUV", "sub": "6 seats", "desc": "Spacious", "examples": "Ertiga, Crysta", "popular": true },
+        { "value": "Premium", "emoji": "⭐", "name": "Premium", "sub": "4 seats", "desc": "Luxury", "examples": "Innova Crysta" }
+      ],
+      "unselected": "border border-[rgba(0,212,200,0.1)] bg-[rgba(238,244,255,0.03)] rounded-2xl p-4 cursor-pointer transition-all duration-250 hover:border-[rgba(0,212,200,0.3)] hover:bg-[rgba(0,212,200,0.04)] text-center",
+      "selected": "border border-[#00D4C8] bg-[rgba(0,212,200,0.08)] rounded-2xl p-4 cursor-pointer shadow-[0_0_20px_rgba(0,212,200,0.12),inset_0_0_20px_rgba(0,212,200,0.03)] text-center",
+      "popular_badge": "absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#00D4C8] text-[#03051A] text-[8px] font-bold font-[Chakra Petch] px-2.5 py-0.5 rounded-full uppercase tracking-wider"
+    },
+
+    "submit": {
+      "valid_style": "w-full mt-6 bg-[#00D4C8] hover:bg-[#00FFED] text-[#03051A] font-bold font-[Cabinet Grotesk] rounded-2xl py-4 text-base flex items-center justify-center gap-3 transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,212,200,0.45)] hover:scale-[1.01] active:scale-[0.99]",
+      "invalid_style": "w-full mt-6 bg-[rgba(238,244,255,0.04)] border border-[rgba(0,212,200,0.1)] text-[rgba(238,244,255,0.2)] font-[Cabinet Grotesk] rounded-2xl py-4 text-base cursor-not-allowed",
+      "valid_text": "Book via WhatsApp  →",
+      "invalid_text": "Fill all details to continue",
+      "icon": "WhatsApp SVG green 18px (only in valid state)",
+      "sparkle_on_click": "canvas-based teal particle burst from button center — 10 particles fly outward and fade"
+    },
+
+    "whatsapp_logic": "const msg = `Hello V3 Tour & Travels! 🚗\\n\\nI'd like to book a ride:\\n\\n📍 Pickup: ${pickup}\\n🏁 Drop: ${drop}\\n📅 Date: ${new Date(date).toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}\\n⏰ Time: ${time}\\n🚘 Vehicle: ${carType}\\n\\nPlease confirm availability and price. Thank you!`; window.open(`https://wa.me/919888000510?text=${encodeURIComponent(msg)}`, '_blank')",
+    "note_below": "⚡ Instant reply · 🔒 Price locked before trip · 💳 Cash / UPI accepted",
+    "note_style": "text-center font-[Satoshi] text-xs text-[rgba(238,244,255,0.3)] mt-4"
+  },
+
+  "ai_booking_assistant": {
+    "concept": "A fully conversational AI booking bot — custom state machine — no external AI API — collects all 5 booking fields through conversation, then sends to WhatsApp. This is V3's secret weapon. It feels like a real travel concierge.",
+    "trigger_button": {
+      "position": "fixed bottom-6 right-6 z-50",
+      "design": "Circular button 56px — bg: #00D4C8 — icon: custom chat/sparkle SVG in dark — shadow: 0 0 0 0 rgba(0,212,200,0.4) — animation: ring pulse (box-shadow expand and fade — 2s infinite)",
+      "label": "Tooltip on hover: 'Book with V3 AI'",
+      "unread_dot": "Small red dot top-right when chat has new message",
+      "hide_on_mobile": false
+    },
+    "chat_panel": {
+      "desktop": "fixed bottom-24 right-6 w-[380px] h-[540px] — rounded-2xl — glass card — z-50",
+      "mobile": "fixed inset-x-3 bottom-20 — max-h-[75vh] — rounded-2xl",
+      "bg": "bg-[rgba(6,9,30,0.95)] backdrop-blur-2xl border border-[rgba(0,212,200,0.18)]",
+      "header": {
+        "bg": "bg-[rgba(0,212,200,0.06)] border-b border-[rgba(0,212,200,0.1)] px-4 py-3",
+        "logo": "V3 logo small + status dot green + 'V3 Travel Assistant' name + 'Online' status",
+        "close_btn": "X icon — closes panel — top right"
+      },
+      "messages_area": "flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 — custom scrollbar teal",
+      "input_area": {
+        "style": "border-t border-[rgba(0,212,200,0.1)] px-3 py-3 flex gap-2",
+        "input": "flex-1 bg-[rgba(238,244,255,0.05)] border border-[rgba(0,212,200,0.12)] rounded-xl px-3 py-2 text-sm text-[#EEF4FF] placeholder-[rgba(238,244,255,0.3)] outline-none focus:border-[#00D4C8]",
+        "send_btn": "bg-[#00D4C8] text-[#03051A] rounded-xl px-3 py-2 — Send icon"
+      }
+    },
+    "message_bubbles": {
+      "ai_bubble": "max-w-[85%] bg-[rgba(0,212,200,0.08)] border border-[rgba(0,212,200,0.12)] rounded-2xl rounded-tl-sm px-4 py-3 text-[#EEF4FF] text-sm font-[Satoshi] leading-relaxed — self-start — animate: fade-in slide-in-from-left duration-300",
+      "user_bubble": "max-w-[85%] bg-[#00D4C8] text-[#03051A] rounded-2xl rounded-tr-sm px-4 py-3 text-sm font-[Satoshi] font-medium — self-end — animate: fade-in slide-in-from-right duration-300",
+      "typewriter": "AI messages appear character by character — 28ms per char — using setInterval + useState"
+    },
+    "quick_chips": {
+      "design": "Row of tappable suggestion chips below AI message",
+      "style": "flex flex-wrap gap-2 mt-2 — each chip: border border-[rgba(0,212,200,0.2)] text-[#00D4C8] text-xs font-[Satoshi] rounded-full px-3 py-1 cursor-pointer hover:bg-[rgba(0,212,200,0.1)] transition-colors"
+    },
+
+    "conversation_flow": {
+      "states": ["idle", "collecting_pickup", "collecting_drop", "collecting_date", "collecting_time", "collecting_car", "confirming", "sent"],
+      "state_machine": {
+        "idle": {
+          "ai_message": "Hi there! 👋 I'm your V3 Travel Assistant. I can book a ride for you in under 60 seconds. Ready to go? 🚗",
+          "quick_chips": ["Yes, let's go!", "Tell me more", "Call instead"]
+        },
+        "collecting_pickup": {
+          "ai_message": "Great! 🎯 Where should I pick you up from? (City, landmark, or address)",
+          "quick_chips": ["Ludhiana City", "Ludhiana Railway Station", "Ludhiana Bus Stand", "Ludhiana Airport"]
+        },
+        "collecting_drop": {
+          "ai_message": "Got it — picking up from **{pickup}**. ✅\n\nWhere are you headed?",
+          "quick_chips": ["Chandigarh Airport", "Delhi Airport (IGI)", "Amritsar Airport", "Chandigarh City"]
+        },
+        "collecting_date": {
+          "ai_message": "Perfect! **{pickup} → {drop}** it is. 🗺️\n\nWhat date do you need the ride?",
+          "quick_chips": ["Today", "Tomorrow", "This Weekend", "Choose Date"]
+        },
+        "collecting_time": {
+          "ai_message": "Got the date — **{date}**. ✅\n\nWhat time should I pick you up?",
+          "quick_chips": ["Early Morning (5-7 AM)", "Morning (8-11 AM)", "Afternoon (12-4 PM)", "Evening (5-9 PM)"]
+        },
+        "collecting_car": {
+          "ai_message": "Almost there! 🚙 Which vehicle type do you prefer?",
+          "quick_chips_cards": [
+            { "value": "Sedan", "emoji": "🚗", "label": "Sedan", "sub": "4 seats — Economical" },
+            { "value": "SUV", "emoji": "🚙", "label": "SUV", "sub": "6 seats — Spacious" },
+            { "value": "Premium", "emoji": "⭐", "label": "Premium", "sub": "4 seats — Luxury" }
+          ]
+        },
+        "confirming": {
+          "ai_message": "Here's your booking summary:\n\n📍 From: **{pickup}**\n🏁 To: **{drop}**\n📅 Date: **{date}**\n⏰ Time: **{time}**\n🚘 Vehicle: **{carType}**\n\nShall I send this to V3 on WhatsApp for confirmation?",
+          "quick_chips": ["Yes, send it! 🚀", "Edit details", "Start over"]
+        },
+        "sent": {
+          "ai_message": "Done! 🎉 Your booking request has been sent to V3 Tour & Travels on WhatsApp. They'll confirm shortly. Have a comfortable journey! ✈️",
+          "action": "whatsapp URL opens",
+          "quick_chips": ["Book another ride", "Call V3 directly"]
+        }
+      },
+      "date_handling": "If user says 'Today' → new Date().toLocaleDateString('en-IN') — 'Tomorrow' → new Date(Date.now()+86400000).toLocaleDateString('en-IN') — 'This Weekend' → next Saturday — otherwise prompt to type",
+      "time_handling": "If user picks 'Early Morning' → '6:00 AM' — 'Morning' → '9:00 AM' — 'Afternoon' → '2:00 PM' — 'Evening' → '6:00 PM'",
+      "whatsapp_message": "Hello V3 Tour & Travels! 🚗\n\nBooking via AI Assistant:\n\n📍 Pickup: {pickup}\n🏁 Drop: {drop}\n📅 Date: {date}\n⏰ Time: {time}\n🚘 Vehicle: {carType}\n\nPlease confirm. Thank you!",
+      "reset_command": "If user types 'reset', 'start over', 'cancel' → reset state to idle"
+    }
+  },
+
+  "services_section": {
+    "id": "services",
+    "bg": "#03051A — diagonal micro-grid pattern: background-image: repeating-linear-gradient(45deg, rgba(0,212,200,0.02) 0px, rgba(0,212,200,0.02) 1px, transparent 1px, transparent 60px)",
+    "label": "WHAT WE OFFER",
+    "headline": "Every Journey,\nPerfectly Handled.",
+    "headline_style": "Cabinet Grotesk 900 clamp(2rem,4vw,3.2rem) — 'Every Journey,' pearl white — 'Perfectly Handled.' teal",
+    "grid": "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5",
+    "card_3d_tilt": "onMouseMove: perspective(800px) rotateX(-Ydeg) rotateY(Xdeg) translateZ(6px) — max ±10deg — onMouseLeave: reset with transition 600ms",
+    "card_style": "relative bg-[#0A0F2E] border border-[rgba(0,212,200,0.1)] rounded-2xl p-7 overflow-hidden group cursor-default transition-all duration-400 hover:border-[rgba(0,212,200,0.3)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_30px_rgba(0,212,200,0.06)]",
+    "card_glow_on_hover": "::before absolute inset-0 bg-[radial-gradient(circle_at_var(--mx)_var(--my),rgba(0,212,200,0.06),transparent_60%)] — --mx --my updated via onMouseMove",
+    "icon_wrap": "w-11 h-11 rounded-xl bg-[rgba(0,212,200,0.1)] flex items-center justify-center mb-5 group-hover:bg-[rgba(0,212,200,0.18)] transition-colors duration-300",
+    "icon_style": "custom SVG per service — stroke: #00D4C8 — 22x22",
+    "services": [
+      { "icon": "arrow-right-circle-svg", "title": "One-Way Taxi", "desc": "Direct city-to-city rides. No round-trip requirement. Pay only for what you need.", "tag": "Most Popular" },
+      { "icon": "refresh-svg", "title": "Round Trip", "desc": "Book both legs with one call. Relaxed travel there and back with the same trusted driver.", "tag": null },
+      { "icon": "plane-svg", "title": "Airport Transfer", "desc": "Flight-tracked pickups and drops. Never miss a flight. Always on time, every time.", "tag": "Best Value" },
+      { "icon": "map-pin-svg", "title": "Local City Rides", "desc": "Hourly rentals for local travel within Ludhiana, Chandigarh, or Amritsar.", "tag": null },
+      { "icon": "navigation-svg", "title": "Outstation Travel", "desc": "Multi-city journeys across Punjab, Haryana, Delhi NCR, and the Himalayas.", "tag": null },
+      { "icon": "briefcase-svg", "title": "Corporate Travel", "desc": "Professional, punctual travel solutions for business events. Bulk packages available.", "tag": "Corporate" }
+    ],
+    "scroll_reveal": "stagger 80ms per card"
+  },
+
+  "routes_section": {
+    "id": "routes",
+    "bg": "#06091E",
+    "label": "POPULAR ROUTES",
+    "headline": "Your Most-Traveled\nPaths, Covered.",
+    "map_visual": {
+      "concept": "A stylized India/Punjab SVG map — minimalist — Punjab state highlighted with a teal fill — route cities marked with glowing dots — dotted animated lines connecting them",
+      "implementation": "SVG element — Punjab region path filled with rgba(0,212,200,0.08) border stroke #00D4C8 opacity 0.3 — 6 city dots at approximate lat/long positions — each dot: r=4 fill #00D4C8 glow animation — stroke-dasharray animated lines between cities",
+      "city_dots": ["Ludhiana", "Chandigarh", "Amritsar", "Delhi", "Shimla"],
+      "route_lines": "stroke-dasharray: 6 4; stroke-dashoffset animated from 100 to 0 on scroll reveal — color: #00D4C8 opacity 0.35"
+    },
+    "route_cards": {
+      "layout": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4",
+      "card_3d_tilt": true,
+      "card_style": "relative bg-[#0A0F2E] border border-[rgba(0,212,200,0.1)] rounded-2xl p-5 cursor-pointer group transition-all duration-300 hover:border-[rgba(0,212,200,0.35)] hover:shadow-[0_0_30px_rgba(0,212,200,0.07)] overflow-hidden",
+      "click_action": "setBookingState({pickup: from, drop: to}); setTimeout(() => scrollTo('#booking'), 100)",
+      "route_arrow_icon": "ArrowUpRight top-right — text-[rgba(0,212,200,0.3)] group-hover:text-[#00D4C8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all",
+      "route_display": "font-family: Cabinet Grotesk; font-weight: 700; font-size: 1.05rem; color: #EEF4FF — FROM ──→ TO",
+      "arrow_style": "inline text-[#00D4C8] mx-1.5 — → character",
+      "meta_chips": "flex gap-2 mt-2.5 — chip: bg-[rgba(238,244,255,0.04)] border border-[rgba(0,212,200,0.1)] rounded-full px-3 py-0.5 text-xs font-[Chakra Petch] text-[rgba(238,244,255,0.45)]",
+      "book_link": "mt-4 text-xs font-[Satoshi] font-semibold text-[#00D4C8] group-hover:underline flex items-center gap-1",
+      "tag_style": "absolute top-4 right-4 text-[8px] font-[Chakra Petch] font-bold uppercase tracking-wider bg-[rgba(0,212,200,0.1)] text-[#00D4C8] border border-[rgba(0,212,200,0.2)] rounded-full px-2 py-0.5"
+    },
+    "routes": [
+      { "from": "Ludhiana", "to": "Chandigarh Airport", "distance": "~95 km", "duration": "~1.5 hrs", "tag": "Most Booked" },
+      { "from": "Ludhiana", "to": "Delhi Airport (IGI)", "distance": "~310 km", "duration": "~5 hrs", "tag": "Long Haul" },
+      { "from": "Ludhiana", "to": "Amritsar Airport", "distance": "~75 km", "duration": "~1.5 hrs", "tag": "Quick Run" },
+      { "from": "Chandigarh", "to": "Ludhiana", "distance": "~95 km", "duration": "~1.5 hrs", "tag": "Return" },
+      { "from": "Delhi", "to": "Ludhiana", "distance": "~310 km", "duration": "~5 hrs", "tag": "Return" },
+      { "from": "Ludhiana", "to": "Shimla", "distance": "~210 km", "duration": "~4 hrs", "tag": "Hills Trip" }
+    ]
+  },
+
+  "fleet_section": {
+    "id": "fleet",
+    "bg": "#03051A",
+    "label": "OUR FLEET",
+    "headline": "Choose Your\nPerfect Ride.",
+    "layout": "3 cards — center card elevated scale-[1.04] — has teal glow border",
+    "card_3d_tilt": true,
+    "cars": [
+      {
+        "type": "Sedan",
+        "emoji": "🚗",
+        "emoji_size": "text-7xl",
+        "platform_style": "w-32 h-32 mx-auto rounded-full bg-[rgba(0,212,200,0.05)] border border-[rgba(0,212,200,0.1)] flex items-center justify-center mb-6",
+        "card_style": "bg-[#0A0F2E] border border-[rgba(0,212,200,0.1)] rounded-3xl p-8",
+        "examples": "Swift Dzire · Honda Amaze",
+        "seats": "4 Passengers",
+        "features": ["Full AC", "Music System", "USB Charging", "Clean Interior"],
+        "ideal": "Daily commute, solo & couple trips",
+        "price": "Most economical",
+        "cta": "Book Sedan"
+      },
+      {
+        "type": "SUV",
+        "emoji": "🚙",
+        "emoji_size": "text-7xl",
+        "platform_style": "w-32 h-32 mx-auto rounded-full bg-[rgba(0,212,200,0.1)] shadow-[0_0_50px_rgba(0,212,200,0.2)] flex items-center justify-center mb-6",
+        "card_style": "bg-[#0C1238] border border-[rgba(0,212,200,0.35)] rounded-3xl p-8 shadow-[0_0_60px_rgba(0,212,200,0.1)]",
+        "badge": "MOST POPULAR — Chakra Petch 8px teal pill — positioned above card",
+        "examples": "Ertiga · Innova · Crysta",
+        "seats": "6 Passengers",
+        "features": ["Spacious Cabin", "Extra Legroom", "Full AC", "Group Friendly"],
+        "ideal": "Family trips, group outstation travel",
+        "price": "Best value for groups",
+        "cta": "Book SUV",
+        "highlighted": true
+      },
+      {
+        "type": "Premium",
+        "emoji": "⭐",
+        "emoji_size": "text-7xl",
+        "platform_style": "w-32 h-32 mx-auto rounded-full bg-[rgba(56,189,248,0.05)] border border-[rgba(56,189,248,0.15)] flex items-center justify-center mb-6",
+        "card_style": "bg-[#0A0F2E] border border-[rgba(0,212,200,0.1)] rounded-3xl p-8",
+        "examples": "Innova Crysta · Toyota Camry",
+        "seats": "4 Passengers",
+        "features": ["Luxury Interior", "Chauffeur Service", "Premium AC", "VIP Treatment"],
+        "ideal": "Corporate, special occasions",
+        "price": "Ultimate luxury experience",
+        "cta": "Book Premium"
+      }
+    ],
+    "cta_style": "w-full mt-6 border border-[rgba(0,212,200,0.25)] text-[#00D4C8] font-[Cabinet Grotesk] font-bold rounded-xl py-3 text-sm hover:bg-[rgba(0,212,200,0.08)] hover:border-[#00D4C8] transition-all duration-200",
+    "highlighted_cta_style": "w-full mt-6 bg-[#00D4C8] text-[#03051A] font-[Cabinet Grotesk] font-bold rounded-xl py-3 text-sm hover:bg-[#00FFED] transition-all duration-200 shadow-[0_0_25px_rgba(0,212,200,0.3)]",
+    "cta_logic": "Each CTA: setCarType(carType); smoothScrollTo('#booking')"
+  },
+
+  "why_v3_section": {
+    "id": "why",
+    "bg": "#06091E — repeating diagonal grid CSS pattern",
+    "label": "WHY V3?",
+    "headline": "The Standard Others\nAim For.",
+    "layout": "Two column — left: animated stats + decorative V3 logo — right: feature list",
+    "left": {
+      "v3_visual": "Large 'V3' text — Cabinet Grotesk 900 — font-size: 10rem — color: transparent — background: linear-gradient(135deg, #00D4C8, #38BDF8, #00FFED) — -webkit-background-clip: text — filter: drop-shadow(0 0 40px rgba(0,212,200,0.3)) — animation: subtleFloat 4s ease-in-out infinite — @keyframes subtleFloat: 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}",
+      "stats": [
+        { "number": 500, "suffix": "+", "label": "Happy Customers" },
+        { "number": 15, "suffix": "+", "label": "Cities Covered" },
+        { "number": "24/7", "suffix": "", "label": "Always On" },
+        { "number": 0, "prefix": "₹", "label": "Hidden Charges" }
+      ],
+      "counter_animation": "CountUp effect: useEffect + setInterval — increments number from 0 to target over 1500ms when section enters viewport — Intersection Observer trigger",
+      "stat_number_style": "font-family: Chakra Petch; font-size: clamp(2.5rem,4vw,3.5rem); font-weight: 600; color: #00D4C8; line-height: 1",
+      "stat_label_style": "font-family: Satoshi; font-size: 0.8rem; color: rgba(238,244,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px"
+    },
+    "right": {
+      "features": [
+        { "icon": "Clock", "title": "24/7 Availability", "desc": "Book at any hour — midnight or noon. We're always ready." },
+        { "icon": "ShieldCheck", "title": "Verified Drivers", "desc": "Background-checked, licensed, and professionally trained." },
+        { "icon": "Sparkles", "title": "Sanitized Vehicles", "desc": "Cleaned before every single trip. Comfort you can see." },
+        { "icon": "Timer", "title": "On-Time Every Time", "desc": "We track your schedule so you never miss a flight." },
+        { "icon": "Lock", "title": "Price Locked on WhatsApp", "desc": "Full fare confirmed before your trip starts. Always." },
+        { "icon": "Zap", "title": "60-Second Booking", "desc": "One WhatsApp message. Confirmed in minutes." }
+      ],
+      "feature_row": "flex items-start gap-4 group py-4 border-b border-[rgba(0,212,200,0.07)] last:border-0",
+      "icon_circle": "w-10 h-10 rounded-xl bg-[rgba(0,212,200,0.08)] flex items-center justify-center flex-shrink-0 group-hover:bg-[rgba(0,212,200,0.15)] transition-colors"
+    }
+  },
+
+  "testimonials_section": {
+    "id": "testimonials",
+    "bg": "#03051A",
+    "label": "CUSTOMER STORIES",
+    "headline": "Real People.\nReal Journeys.",
+    "grid": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5",
+    "card_style": "bg-[#0A0F2E] border border-[rgba(0,212,200,0.1)] rounded-2xl p-7 transition-all duration-300 hover:border-[rgba(0,212,200,0.25)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.4)] group",
+    "card_3d_tilt": true,
+    "reviews": [
+      { "name": "Harpreet Singh", "loc": "Ludhiana", "trip": "Ludhiana → Chandigarh Airport", "stars": 5, "text": "4 AM airport drop, driver was 10 minutes early, car spotless. No stress at all. V3 is simply the best travel service in Punjab.", "initials": "HS" },
+      { "name": "Anita Sharma", "loc": "Chandigarh", "trip": "Chandigarh → Ludhiana", "stars": 5, "text": "Price was exactly what they quoted on WhatsApp. Comfortable Innova, professional driver. Will always use V3 for my family trips.", "initials": "AS" },
+      { "name": "Rajiv Malhotra", "loc": "Delhi", "trip": "Ludhiana ↔ Delhi", "stars": 5, "text": "Round trip to Delhi was smooth and comfortable. Driver was polite, stopped for breaks, and kept the car cool the whole way. Excellent service!", "initials": "RM" },
+      { "name": "Gurpreet Kaur", "loc": "Amritsar", "trip": "Ludhiana → Amritsar Airport", "stars": 5, "text": "WhatsApp booking was done in 2 minutes. No app, no hassle. The V3 AI assistant helped me book even faster. Highly recommend!", "initials": "GK" },
+      { "name": "Vikram Bhatia", "loc": "Ludhiana", "trip": "Corporate — Delhi Trip", "stars": 5, "text": "Used V3 for a client pickup from Delhi. Premium Crysta, chauffeur in formals, arrived on time. Our company now has V3 on speed dial.", "initials": "VB" }
+    ],
+    "star_color": "#00D4C8",
+    "avatar_style": "w-10 h-10 rounded-full bg-gradient-to-br from-[#00D4C8] to-[#38BDF8] flex items-center justify-center text-[#03051A] font-bold text-sm font-[Cabinet Grotesk]",
+    "trip_badge": "text-[9px] font-[Chakra Petch] font-semibold bg-[rgba(0,212,200,0.08)] text-[#00D4C8] border border-[rgba(0,212,200,0.2)] rounded-full px-2 py-0.5 uppercase tracking-wider"
+  },
+
+  "pricing_section": {
+    "id": "pricing",
+    "bg": "#06091E",
+    "label": "PRICING",
+    "headline": "No Surprises.\nEver.",
+    "layout": "Two column",
+    "left": {
+      "big_statement": "Price confirmed\nbefore you ride.",
+      "style": "Cabinet Grotesk 800 2.5rem EEF4FF",
+      "body": "We share your full fare on WhatsApp before confirming. What we quote is exactly what you pay. No meter running. No surprise additions.",
+      "cta": { "text": "Get a Free Quote", "action": "whatsapp link", "style": "teal outlined rounded-full" }
+    },
+    "notes": [
+      { "icon": "Gauge", "title": "Dynamic Pricing", "desc": "Fare based on route, distance, and vehicle type. Flat rate — not metered." },
+      { "icon": "FileText", "title": "State Tax Outside Punjab", "desc": "Delhi, Haryana, HP may have border taxes — always included in your quote." },
+      { "icon": "ParkingCircle", "title": "Parking Actuals", "desc": "Airport parking if any — charged at actuals — always communicated in advance." },
+      { "icon": "Wallet", "title": "Cash / UPI / Transfer", "desc": "Multiple payment options. Details shared after booking confirmation." }
+    ],
+    "note_card": "flex items-start gap-4 p-5 bg-[#0A0F2E] border border-[rgba(0,212,200,0.1)] rounded-2xl hover:border-[rgba(0,212,200,0.25)] transition-colors"
+  },
+
+  "faq_section": {
+    "id": "faq",
+    "bg": "#03051A",
+    "label": "FAQ",
+    "headline": "Questions\nAnswered.",
+    "container": "max-w-2xl mx-auto",
+    "accordion_wrap": "border border-[rgba(0,212,200,0.1)] rounded-2xl overflow-hidden divide-y divide-[rgba(0,212,200,0.06)] bg-[#0A0F2E]",
+    "item_header": "flex items-center justify-between px-6 py-5 cursor-pointer hover:bg-[rgba(0,212,200,0.03)] transition-colors group select-none",
+    "q_style": "font-family: Satoshi; font-weight: 500; color: #EEF4FF; font-size: 0.9rem",
+    "chevron": "w-4 h-4 text-[#00D4C8] transition-transform duration-300 [.open_&]:rotate-180",
+    "answer_style": "px-6 pb-5 font-family: Satoshi; font-size: 0.875rem; color: rgba(238,244,255,0.5); line-height: 1.7",
+    "animation": "max-height: 0 → 200px — overflow hidden — transition 350ms ease — one open at a time",
+    "items": [
+      { "q": "How do I book a ride?", "a": "Fill the booking form on this page and click 'Book via WhatsApp' — or chat with our V3 AI Assistant. A formatted message opens in WhatsApp — hit send and we confirm within minutes." },
+      { "q": "How is the final price calculated?", "a": "Price is based on route, distance, and vehicle type. We share the complete fare on WhatsApp before you confirm. Flat rate — no meter, no surprises." },
+      { "q": "Can I cancel my booking?", "a": "Yes. Inform us at least 2 hours before your pickup via WhatsApp or call. Most advance cancellations are penalty-free." },
+      { "q": "Are there night-travel surcharges?", "a": "A small surcharge may apply for trips starting between 11 PM and 5 AM. This is always included in your quote — never added afterward." },
+      { "q": "What about travel outside Punjab?", "a": "We cover all outstation routes — Delhi, Haryana, Himachal Pradesh, Rajasthan, J&K. State border taxes (if any) are clearly listed in your quote." },
+      { "q": "Is airport parking included?", "a": "Parking is charged at actuals and communicated clearly in your quote before the trip. Never a surprise." },
+      { "q": "Are drivers verified?", "a": "100%. All V3 drivers are background-verified, hold valid commercial licenses, and are trained in safety and professional conduct." },
+      { "q": "What is the V3 AI Assistant?", "a": "It's our built-in travel assistant that can book your ride through a quick chat — right here on the website. It collects your details and sends everything to WhatsApp for confirmation." }
+    ]
+  },
+
+  "final_cta_section": {
+    "id": "contact",
+    "bg": "bg-gradient-to-br from-[#060B28] via-[#0A1035] to-[#060B28] — mx-4 rounded-3xl border border-[rgba(0,212,200,0.15)]",
+    "glow_orb": "absolute -top-16 -right-16 w-72 h-72 rounded-full bg-[#00D4C8] opacity-[0.05] blur-[80px]",
+    "badge": "'Ready to Travel?' teal pill",
+    "headline": "Your Next Journey\nStarts Right Here.",
+    "style": "Cabinet Grotesk 900 clamp(2.5rem,5vw,4.5rem) — EEF4FF",
+    "sub": "Book in 60 seconds. Available 24/7 across Punjab and beyond.",
+    "ctAs": [
+      { "text": "Book via WhatsApp", "icon": "wa-svg green", "action": "wa.me link", "style": "bg-[#22C55E] hover:bg-[#16A34A] text-white font-bold rounded-full px-8 py-4 hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all hover:scale-105 flex items-center gap-3" },
+      { "text": "Call +91 98880 00510", "icon": "Phone", "action": "tel:+919888000510", "style": "bg-[#00D4C8] hover:bg-[#00FFED] text-[#03051A] font-bold rounded-full px-8 py-4 hover:shadow-[0_0_30px_rgba(0,212,200,0.45)] transition-all hover:scale-105 flex items-center gap-3" },
+      { "text": "Book Online", "action": "scrollTo('#booking')", "style": "border border-[rgba(238,244,255,0.15)] hover:border-[rgba(0,212,200,0.4)] text-[#EEF4FF] font-semibold rounded-full px-8 py-4 hover:bg-white/5 transition-all flex items-center gap-2" }
+    ],
+    "contact_info": "Below CTAs — phone + email + location — pill chips with icons — bg-[rgba(238,244,255,0.04)] border border-[rgba(0,212,200,0.1)]"
+  },
+
+  "footer": {
+    "bg": "#03051A border-t border-[rgba(0,212,200,0.08)]",
+    "grid": "grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-16 pb-8",
+    "col1_brand": {
+      "logo": "Full V3 SVG logo — teal variant",
+      "tagline": "Where Comfort Meets Journey",
+      "desc": "Premium travel service in Ludhiana. Airport transfers, outstation trips, local rides across all of Punjab.",
+      "location": "📍 Ludhiana, Punjab, India"
+    },
+    "col2": { "heading": "Quick Links", "links": ["Home", "Services", "Routes", "Fleet", "FAQ", "Contact"] },
+    "col3": { "heading": "Services", "links": ["One-Way Taxi", "Round Trip", "Airport Transfer", "Local Rides", "Outstation Travel", "Corporate Travel"] },
+    "col4": {
+      "heading": "Get In Touch",
+      "items": [
+        { "icon": "Phone", "text": "+91 98880 00510", "link": "tel:+919888000510" },
+        { "icon": "MessageCircle", "text": "WhatsApp Us", "link": "https://wa.me/919888000510", "color": "#22C55E" },
+        { "icon": "Mail", "text": "imsatpalgrover@gmail.com", "link": "mailto:imsatpalgrover@gmail.com" },
+        { "icon": "MapPin", "text": "Ludhiana, Punjab, India" }
+      ]
+    },
+    "heading_style": "font-family: Chakra Petch; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(238,244,255,0.4); margin-bottom: 16px",
+    "link_style": "font-family: Satoshi; font-size: 0.875rem; color: rgba(238,244,255,0.45); hover: color #00D4C8; transition-colors",
+    "bottom_bar": "border-t border-[rgba(0,212,200,0.06)] mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs font-[Satoshi] text-[rgba(238,244,255,0.25)]",
+    "copyright": "© 2025 V3 Tour & Travels. All rights reserved.",
+    "credit": "Made with ❤️ in Ludhiana, Punjab"
+  },
+
+  "mobile_sticky_bar": {
+    "visibility": "md:hidden — fixed bottom-0 left-0 right-0 z-40",
+    "trigger": "visible after scrollY > 250 — transition: transform 400ms ease-out — hidden: translateY(100%)",
+    "style": "bg-[rgba(3,5,26,0.95)] backdrop-blur-xl border-t border-[rgba(0,212,200,0.15)] px-4 py-3",
+    "layout": "grid grid-cols-2 gap-3",
+    "call": "bg-[#00D4C8] text-[#03051A] font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-sm — tel: link",
+    "whatsapp": "bg-[#22C55E] text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 text-sm — wa.me link"
+  },
+
+  "scroll_reveal_system": {
+    "implementation": "IntersectionObserver — threshold: 0.1 — rootMargin: '0px 0px -40px 0px'",
+    "initial": "opacity-0 translate-y-8",
+    "active": "opacity-100 translate-y-0",
+    "transition": "transition-all duration-700 ease-out",
+    "stagger": "each child: animation-delay: calc(var(--index, 0) * 80ms) — set via style={{--index: i}}",
+    "headings": "split into two spans — each animates with 100ms offset",
+    "counters": "trigger CountUp when Why V3 section enters viewport"
+  },
+
+  "state_architecture": {
+    "root_state": "const [booking, setBooking] = useState({ pickup: '', drop: '', date: '', time: '', carType: '' })",
+    "validity": "const isValid = booking.pickup.trim().length >= 3 && booking.drop.trim().length >= 3 && booking.date && booking.time && booking.carType",
+    "prefill_fn": "const prefill = (fields) => setBooking(prev => ({...prev, ...fields})); setTimeout(() => document.getElementById('booking')?.scrollIntoView({behavior:'smooth', block:'start'}), 120)",
+    "ai_state": "const [chat, setChat] = useState({ open: false, state: 'idle', messages: [], collected: {} })",
+    "prop_drilling": "Pass booking + setBooking to BookingForm, FleetSection, RoutesSection — pass prefill to route/fleet CTAs"
+  },
+
+  "css_globals": {
+    "font_import": "@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,600&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&display=swap');",
+    "scrollbar": "::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#03051A}::-webkit-scrollbar-thumb{background:#00D4C8;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:#00FFED}",
+    "selection": "::selection{background:rgba(0,212,200,0.25);color:#EEF4FF}",
+    "smooth_scroll": "html{scroll-behavior:smooth}",
+    "focus": ":focus-visible{outline:2px solid #00D4C8;outline-offset:3px}",
+    "gradient_text": ".teal-text{background:linear-gradient(135deg,#00D4C8,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}",
+    "glow_pulse": "@keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,212,200,0.4)}50%{box-shadow:0 0 0 12px rgba(0,212,200,0)}}",
+    "float": "@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}",
+    "chat_ring": "@keyframes chatRing{0%{box-shadow:0 0 0 0 rgba(0,212,200,0.5)}70%{box-shadow:0 0 0 16px rgba(0,212,200,0)}100%{box-shadow:0 0 0 0 rgba(0,212,200,0)}}"
+  },
+
+  "performance": {
+    "three_js": "Cleanup all geometries, materials, textures, renderer on unmount. Pause rAF on tab hidden.",
+    "particles": "Responsive config: 55 desktop / 22 mobile. detectRetina.",
+    "fonts": "fontshare + Google Fonts with display=swap. Non-blocking.",
+    "3d_tilt": "Disabled on touch devices: if('ontouchstart' in window) skip tilt handler",
+    "images": "Zero external images. All visuals via emoji, SVG, CSS gradients.",
+    "will_change": "Apply will-change:transform only to actively animating elements. Remove after animation.",
+    "session_loader": "sessionStorage check skips loading animation on revisit"
+  },
+
+  "final_instruction": "Build the COMPLETE V3 Tour & Travels futuristic travel booking website exactly as described in this JSON. This is a REAL premium taxi business in Ludhiana, Punjab, India. The color palette is DEEP SPACE NAVY + ELECTRIC TEAL + PEARL WHITE — absolutely NO black/gold. Fonts: Cabinet Grotesk + Satoshi + Chakra Petch. The loading screen must play on first visit with left-to-right letter animation. The hero must have a Three.js 3D night highway with TEAL LED road edges, teal headlight beams, teal city particles. The V3 AI Booking Assistant chatbot must work as a complete conversational booking flow — collecting all 5 fields through chat chips and text input — ending with a WhatsApp message. Every card must have CSS 3D tilt. All booking CTAs must prefill the form and scroll to it. The site must look like it was handcrafted by a 30-year senior developer — NOT AI-generated. Zero placeholders. Zero broken logic. This is the world's best taxi booking website."
+}
