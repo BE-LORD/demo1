@@ -1,13 +1,33 @@
-import { useCallback } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 import Particles from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 
 export default function ParticleSystem() {
+  const [shouldRender, setShouldRender] = useState(false)
+
+  useEffect(() => {
+    // Only render particles on desktop devices
+    const checkDevice = () => {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+      const isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4
+      
+      // Disable particles on mobile or low-end devices for performance
+      setShouldRender(!isMobile && !isLowEnd)
+    }
+    
+    checkDevice()
+    window.addEventListener('resize', checkDevice)
+    return () => window.removeEventListener('resize', checkDevice)
+  }, [])
+
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine)
   }, [])
 
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  // Don't render on mobile - huge performance boost
+  if (!shouldRender) {
+    return null
+  }
 
   return (
     <Particles
@@ -20,7 +40,7 @@ export default function ParticleSystem() {
         fpsLimit: 60,
         particles: {
           number: {
-            value: isMobile ? 22 : 55,
+            value: 35,
             density: {
               enable: true,
               area: 900
@@ -33,28 +53,28 @@ export default function ParticleSystem() {
             type: 'circle'
           },
           opacity: {
-            value: 0.35,
+            value: 0.3,
             random: true,
             animation: {
               enable: true,
-              speed: 0.6,
+              speed: 0.5,
               sync: false,
               minimumValue: 0.05
             }
           },
           size: {
-            value: { min: 1, max: 2.5 }
+            value: { min: 1, max: 2 }
           },
           links: {
             enable: true,
-            distance: 130,
+            distance: 120,
             color: '#00D4C8',
-            opacity: 0.07,
+            opacity: 0.06,
             width: 1
           },
           move: {
             enable: true,
-            speed: 0.5,
+            speed: 0.4,
             direction: 'none',
             random: true,
             straight: false,
@@ -76,8 +96,8 @@ export default function ParticleSystem() {
           },
           modes: {
             repulse: {
-              distance: 90,
-              duration: 0.5
+              distance: 80,
+              duration: 0.4
             }
           }
         },

@@ -412,6 +412,28 @@ html, body {
 
 /* Additional Mobile Optimizations */
 @media (max-width: 768px) {
+  /* CRITICAL: Disable expensive visual effects on mobile */
+  .backdrop-blur-xl,
+  .backdrop-blur-3xl,
+  .backdrop-blur-sm,
+  .backdrop-blur-md {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(3, 5, 26, 0.95) !important;
+  }
+  
+  /* Disable shadows on mobile for performance */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+  
+  /* Keep only essential shadows for buttons */
+  button:active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+  
   /* Disable hover effects on mobile */
   .group:hover .group-hover\:scale-110,
   .group:hover .group-hover\:rotate-3,
@@ -421,9 +443,16 @@ html, body {
     transform: none !important;
   }
   
-  /* Simplify mobile animations */
-  .transition-all {
-    transition-duration: 0.2s !important;
+  /* Simplify mobile animations - CRITICAL */
+  .transition-all,
+  .transition-transform,
+  .transition-opacity {
+    transition-duration: 0.15s !important;
+  }
+  
+  /* Disable parallax on mobile */
+  .parallax {
+    transform: none !important;
   }
   
   /* Better mobile grid spacing */
@@ -453,6 +482,22 @@ html, body {
   .py-20 {
     padding-top: 2.5rem !important;
     padding-bottom: 2.5rem !important;
+  }
+  
+  /* Optimize scroll performance */
+  * {
+    will-change: auto !important;
+  }
+  
+  /* Reduce animation complexity */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideInFromBottom {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 

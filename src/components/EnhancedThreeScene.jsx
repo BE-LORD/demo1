@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { PerspectiveCamera, Stars } from '@react-three/drei'
-import { Suspense, useRef } from 'react'
+import { Suspense, useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -161,6 +161,21 @@ function Scene() {
 }
 
 export default function EnhancedThreeScene() {
+  const [shouldRender, setShouldRender] = useState(false)
+
+  useEffect(() => {
+    // Only render Three.js on desktop for performance
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+    setShouldRender(!isMobile)
+  }, [])
+
+  // Don't render Three.js on mobile - massive performance improvement
+  if (!shouldRender) {
+    return (
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-bg-deepest/20 to-bg-deepest/40" />
+    )
+  }
+
   return (
     <div className="absolute inset-0 z-[1] pointer-events-none">
       <Canvas>
