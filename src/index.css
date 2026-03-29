@@ -116,6 +116,48 @@ html, body {
   body {
     cursor: auto !important;
   }
+  
+  /* Better mobile scrolling */
+  * {
+    -webkit-tap-highlight-color: rgba(0, 212, 200, 0.1);
+  }
+  
+  /* Prevent text selection on buttons */
+  button {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+  }
+  
+  /* Better mobile spacing - force consistent padding */
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Fix container widths on mobile */
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .max-w-2xl {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  /* Prevent horizontal overflow */
+  * {
+    max-width: 100vw;
+  }
+  
+  /* Better mobile form inputs */
+  input, textarea, select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
 }
 
 /* Custom Scrollbar */
@@ -366,4 +408,81 @@ html, body {
 /* Disable transitions on page load */
 .preload * {
   transition: none !important;
+}
+
+/* Additional Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Disable hover effects on mobile */
+  .group:hover .group-hover\:scale-110,
+  .group:hover .group-hover\:rotate-3,
+  .hover\:scale-105,
+  .hover\:scale-\[1\.02\],
+  .hover\:scale-\[1\.01\] {
+    transform: none !important;
+  }
+  
+  /* Simplify mobile animations */
+  .transition-all {
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Better mobile grid spacing */
+  .gap-6 {
+    gap: 1rem !important;
+  }
+  
+  .gap-8 {
+    gap: 1.25rem !important;
+  }
+  
+  /* Mobile-friendly padding */
+  .p-8 {
+    padding: 1.25rem !important;
+  }
+  
+  .px-8 {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  
+  .py-24 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .py-20 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+  .safe-area-inset {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  
+  .pb-safe {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 896px) and (orientation: landscape) {
+  .h-screen {
+    height: 100vh;
+    height: 100dvh;
+  }
+  
+  section {
+    min-height: auto !important;
+  }
 }

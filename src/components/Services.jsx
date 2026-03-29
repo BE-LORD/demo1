@@ -6,6 +6,17 @@ export default function Services({ prefillBooking }) {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
   const [hoveredCard, setHoveredCard] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Detect mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,6 +40,7 @@ export default function Services({ prefillBooking }) {
   }, [])
 
   const handleCardMouseMove = (e, index) => {
+    if (isMobile) return // Disable on mobile
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -44,6 +56,7 @@ export default function Services({ prefillBooking }) {
   }
 
   const handleCardMouseLeave = (e) => {
+    if (isMobile) return // Disable on mobile
     e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)'
   }
 
@@ -51,7 +64,7 @@ export default function Services({ prefillBooking }) {
     <section 
       ref={sectionRef}
       id="services" 
-      className="relative py-24 px-4 bg-bg-deepest overflow-hidden"
+      className="relative py-12 sm:py-24 px-4 bg-bg-deepest overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">

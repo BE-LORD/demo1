@@ -27,21 +27,21 @@ export default function Routes({ prefillBooking }) {
   }, [])
 
   return (
-    <section ref={sectionRef} id="routes" className="py-20 px-4 bg-bg-deep">
+    <section ref={sectionRef} id="routes" className="py-12 sm:py-20 px-4 bg-bg-deep">
       <div className="max-w-7xl mx-auto">
         <div 
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-12 sm:mb-16 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
         >
           <div className="font-chakra text-xs tracking-[0.25em] text-electric-teal uppercase mb-3">POPULAR ROUTES</div>
-          <h2 className="font-cabinet font-extrabold text-white-pearl" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}>
+          <h2 className="font-cabinet font-extrabold text-white-pearl px-4" style={{ fontSize: 'clamp(1.75rem, 4vw, 3.2rem)' }}>
             Your Most-Traveled<br />
             <span className="teal-text">Paths, Covered.</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {routesData.map((route, i) => (
             <div
               key={route.id}
