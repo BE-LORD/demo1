@@ -4,6 +4,17 @@ import CarShowcase from './CarShowcase'
 export default function Fleet({ prefillBooking }) {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,6 +81,7 @@ export default function Fleet({ prefillBooking }) {
   ]
 
   const handleCardMouseMove = (e) => {
+    if (isMobile) return // Disable 3D effect on mobile
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -85,6 +97,7 @@ export default function Fleet({ prefillBooking }) {
   }
 
   const handleCardMouseLeave = (e) => {
+    if (isMobile) return // Disable 3D effect on mobile
     const card = e.currentTarget
     if (card.classList.contains('highlighted-card')) {
       card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1.05)'

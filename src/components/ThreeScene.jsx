@@ -11,6 +11,9 @@ export default function ThreeScene() {
   useEffect(() => {
     if (!containerRef.current) return
 
+    // Detect mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+
     // Scene setup
     const scene = new THREE.Scene()
     sceneRef.current = scene
@@ -26,11 +29,12 @@ export default function ThreeScene() {
     cameraRef.current = camera
 
     const renderer = new THREE.WebGLRenderer({ 
-      antialias: true, 
-      alpha: true 
+      antialias: !isMobile, // Disable antialiasing on mobile for performance
+      alpha: true,
+      powerPreference: isMobile ? 'low-power' : 'high-performance'
     })
     renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2)) // Lower pixel ratio on mobile
     renderer.setClearColor(0x000000, 0)
     containerRef.current.appendChild(renderer.domElement)
     rendererRef.current = renderer
@@ -63,7 +67,8 @@ export default function ThreeScene() {
 
     // Road markings
     const markings = []
-    for (let i = 0; i < 16; i++) {
+    const markingCount = isMobile ? 12 : 16 // Fewer markings on mobile
+    for (let i = 0; i < markingCount; i++) {
       const markingGeometry = new THREE.BoxGeometry(0.05, 0.002, 0.7)
       const markingMaterial = new THREE.MeshBasicMaterial({ 
         color: 0xFFFFFF, 
@@ -111,10 +116,11 @@ export default function ThreeScene() {
     rightBeam.rotation.x = Math.PI / 2
     scene.add(rightBeam)
 
-    // City skyline (TEAL theme)
+    // City skyline (TEAL theme) - Reduced particles on mobile
     const cityPositions = []
     const cityColors = []
-    for (let i = 0; i < 140; i++) {
+    const cityParticleCount = isMobile ? 80 : 140
+    for (let i = 0; i < cityParticleCount; i++) {
       cityPositions.push(
         (Math.random() - 0.5) * 20,
         Math.random() * 5,
@@ -143,9 +149,10 @@ export default function ThreeScene() {
     const cityPoints = new THREE.Points(cityGeometry, cityMaterial)
     scene.add(cityPoints)
 
-    // Stars
+    // Stars - Reduced on mobile
     const starPositions = []
-    for (let i = 0; i < 350; i++) {
+    const starCount = isMobile ? 200 : 350
+    for (let i = 0; i < starCount; i++) {
       const theta = Math.random() * Math.PI * 2
       const phi = Math.acos(Math.random() * 2 - 1)
       const radius = 60
@@ -190,15 +197,17 @@ export default function ThreeScene() {
       leftBeam.material.opacity = 0.04 + Math.sin(time * 0.7) * 0.02
       rightBeam.material.opacity = 0.04 + Math.sin(time * 0.7) * 0.02
 
-      // Animate city skyline
-      const cityPos = cityPoints.geometry.attributes.position.array
-      for (let i = 0; i < cityPos.length; i += 3) {
-        cityPos[i + 1] += Math.sin(time + i * 0.4) * 0.005
+      // Animate city skyline - Skip on mobile for performance
+      if (!isMobile) {
+        const cityPos = cityPoints.geometry.attributes.position.array
+        for (let i = 0; i < cityPos.length; i += 3) {
+          cityPos[i + 1] += Math.sin(time + i * 0.4) * 0.005
+        }
+        cityPoints.geometry.attributes.position.needsUpdate = true
       }
-      cityPoints.geometry.attributes.position.needsUpdate = true
 
-      // Star rotation
-      scene.rotation.y += 0.00015
+      // Star rotation - Slower on mobile
+      scene.rotation.y += isMobile ? 0.0001 : 0.00015
 
       renderer.render(scene, camera)
     }

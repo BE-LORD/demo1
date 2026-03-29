@@ -7,6 +7,17 @@ export default function BookingForm({ booking, setBooking }) {
   const cardRef = useRef(null)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Intersection Observer for scroll animation
   useEffect(() => {
@@ -32,7 +43,7 @@ export default function BookingForm({ booking, setBooking }) {
 
   // 3D tilt effect on mouse move
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return
+    if (isMobile || !cardRef.current) return // Disable tilt on mobile
     
     const rect = cardRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -293,15 +304,15 @@ Please confirm availability and price. Thank you!`
               </svg>
               Choose Vehicle
             </label>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {carTypes.map((car, index) => (
                 <div
                   key={car.value}
                   onClick={() => handleCarTypeSelect(car.value)}
-                  className={`relative cursor-pointer rounded-2xl p-5 text-center transition-all duration-300 group ${
+                  className={`relative cursor-pointer rounded-xl sm:rounded-2xl p-3 sm:p-5 text-center transition-all duration-300 group ${
                     booking.carType === car.value
                       ? 'border-2 border-electric-teal bg-electric-teal/10 shadow-[0_0_30px_rgba(0,212,200,0.2),inset_0_0_30px_rgba(0,212,200,0.05)] scale-105'
-                      : 'border border-white-pearl/10 bg-white-pearl/3 hover:border-electric-teal/40 hover:bg-electric-teal/5 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,212,200,0.1)]'
+                      : 'border border-white-pearl/10 bg-white-pearl/3 hover:border-electric-teal/40 hover:bg-electric-teal/5 active:scale-95 sm:hover:scale-105 sm:hover:shadow-[0_8px_24px_rgba(0,212,200,0.1)]'
                   }`}
                   style={{
                     transform: booking.carType === car.value ? 'translateY(-4px)' : '',
@@ -309,14 +320,14 @@ Please confirm availability and price. Thank you!`
                   }}
                 >
                   {car.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-electric-teal to-bright-teal text-bg-deepest text-[9px] font-bold font-chakra px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                    <div className="absolute -top-2 sm:-top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-electric-teal to-bright-teal text-bg-deepest text-[8px] sm:text-[9px] font-bold font-chakra px-2 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap">
                       Popular
                     </div>
                   )}
-                  <div className="text-5xl mb-3 transition-transform duration-300 group-hover:scale-110">{car.emoji}</div>
-                  <div className="font-cabinet font-bold text-white-pearl text-base mb-1">{car.name}</div>
-                  <div className="font-satoshi text-xs text-white-pearl/50">{car.sub}</div>
-                  <div className="font-satoshi text-xs text-electric-teal/80 mt-2 font-medium">{car.desc}</div>
+                  <div className="text-3xl sm:text-5xl mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-110">{car.emoji}</div>
+                  <div className="font-cabinet font-bold text-white-pearl text-sm sm:text-base mb-0.5 sm:mb-1">{car.name}</div>
+                  <div className="font-satoshi text-[10px] sm:text-xs text-white-pearl/50">{car.sub}</div>
+                  <div className="font-satoshi text-[10px] sm:text-xs text-electric-teal/80 mt-1 sm:mt-2 font-medium">{car.desc}</div>
                 </div>
               ))}
             </div>
